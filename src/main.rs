@@ -19,7 +19,7 @@ fn vector_training(){
     println!("Le 3ème élement du vecteur est {}",element);
 
     match v.get(2) {
-        Some(troisieme)=>println!("Le troisieme element est {}",troisieme),
+        Some(third)=>println!("Le troisieme element est {}",third),
         None=>println!("Il n'y a pas de troisieme element")
     }
 
@@ -40,12 +40,78 @@ fn vector_training(){
         Text(String),
     }
 
+    #[allow(unused_variables)]
     let line = vec![
         Cell::Int(63),
         Cell::Float(15.92),
         Cell::Text(String::from("coucou"))
     ];
 
+
+}
+
+fn string_training(){
+
+    //create new empty String
+    #[allow(unused_variables)]
+        let s = String::new();
+
+    //create &str data
+    #[allow(unused_variables)]
+        let data = "initial content";
+
+    //define a string with data inside it
+    #[allow(unused_variables)]
+        let s = data.to_string();
+
+    //define a string with &str inside it
+    #[allow(unused_variables)]
+        let s = "initial content".to_string();
+
+    //define a string with content inside of it with From:: method
+    #[allow(unused_variables)]
+        let s = String::from("initial content");
+
+    //push_str method to add string after
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    //push_str method to add string after with a variable
+    let mut s = String::from("foo");
+    let s2 = "bar";
+    s.push_str(s2);
+    println!("s2 est {}",s2);
+
+    //push method in order to add a unique letter to a String
+    let mut s = String::from("lo");
+    s.push('l');
+
+    //concatenation of 2 variables to make a bigger String
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    #[allow(unused_variables)]
+        let s3 = s1 + &s2;
+
+    //concatenation using macro format!
+    let s1 = String::from("Tic");
+    let s2 = String::from("Tac");
+    let s3 = String::from("Toe");
+
+    let concatenate = format!("{}-{}-{}",s1,s2,s3);
+    
+    //getting char in a string with for loop
+    for c in concatenate.chars() {
+        println!("{}",c)
+    }
+
+    //getting byte in a string with for loop
+    for byte in concatenate.bytes() {
+        println!("{}",byte)
+    }
+
+}
+
+fn hash_map_training(){
 
 }
 
