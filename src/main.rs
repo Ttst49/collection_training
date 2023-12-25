@@ -1,4 +1,4 @@
-fn vector_training(){
+pub fn vector_training(){
 
     //create a vector without values
     let mut v : Vec<i64> = Vec::new();
@@ -50,7 +50,7 @@ fn vector_training(){
 
 }
 
-fn string_training(){
+pub fn string_training(){
 
     //create new empty String
     #[allow(unused_variables)]
@@ -111,14 +111,79 @@ fn string_training(){
 
 }
 
-fn hash_map_training(){
+
+use std::collections::HashMap;
+pub fn hash_map_training(){
+
+    //manual definition of hash map
+    let mut scores = HashMap::new();
+    scores.insert(String::from("blue"),10);
+    scores.insert(String::from("red"),7);
+
+    //hash map with collect and zip from vectors
+    let teams = vec![String::from("blue"), String::from("red")];
+    let initial_scores = vec![10,7];
+
+    #[allow(unused_variables)]
+    let scores: HashMap<_,_>  = teams.into_iter().zip(initial_scores.into_iter()).collect();
+
+    //define range
+
+    let field_name = String::from("Favorite color");
+    let field_data = String::from("Blue");
+
+    let mut hash = HashMap::new();
+
+    hash.insert(field_name,field_data);
+
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    //get a unique value from a variable
+    let team_name = String::from("Yellow");
+    scores.get(&team_name);
+
+    //get all values from a for loop
+    for (key,value) in &scores {
+        println!("Your key is {} and it value is {}", key,value)
+    }
+
+    //rewrite a value for an existing key
+
+    //scores.insert(String::from("Blue"),25);
+    scores.insert(String::from("Blue"),33);
+
+    println!("{:?}", scores);
+
+    //add a value only if there is no already one for a specific key
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Brown"), 10);
+
+    scores.entry(String::from("Purple")).or_insert(50);
+    scores.entry(String::from("Brown")).or_insert(50);
+
+    println!("{:?}", scores);
+
+    //check every word in a sentence and add to counter
+    let text = "bonjour le monde magnifique monde";
+
+    let mut table = HashMap::new();
+
+    for mot in text.split_whitespace() {
+        let counter = table.entry(mot).or_insert(0);
+        *counter += 1;
+    }
+
+    println!("{:?}", table);
 
 }
 
 
 
 fn main() {
-    vector_training()
+    hash_map_training()
 }
 
 
